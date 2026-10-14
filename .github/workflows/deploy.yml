@@ -34,6 +34,16 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Inspect build output
+        run: |
+          echo "Workspace:"
+          pwd
+          echo "Root files:"
+          ls -la
+          echo "Build output directories:"
+          find . -maxdepth 3 -type d \( -name dist -o -name build -o -name .output \) -not -path './node_modules/*'
+
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
